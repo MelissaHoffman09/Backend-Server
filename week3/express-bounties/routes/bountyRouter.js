@@ -16,7 +16,7 @@ const bounties = [
         last_name: "Odison",
         type: "Sith",
         living: false,
-        price: 9500,
+        price: 19500,
         _id: uuidv4()
     },
     {
