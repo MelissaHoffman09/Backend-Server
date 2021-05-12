@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const PORT = 6500
+const PORT = 5500
 
 // Middleware
 app.use(express.json())
 
 // Routes
-app.use('/bounties', require('./routes/bountyRouter.js'));
+app.use('/bounty', require('./routes/bountyRouter.js'));
 
 // Listen
 app.listen(PORT, () => {
