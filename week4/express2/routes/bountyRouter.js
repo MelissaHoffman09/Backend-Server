@@ -2,7 +2,6 @@ const express = require('express');
 const bountyRouter = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
-
 const bounties = [
     {
         first_name: "Black",
@@ -38,16 +37,37 @@ const bounties = [
     }
 ];
 
+// get
 bountyRouter.route("/")
 .get((req, res) => {
     res.send(bounties)
 })
+
+// post
 .post((req, res) => {
     console.log(req.body);
     const newBounty = req.body;
     newBounty._id = uuidv4();
     bounties.push(newBounty);
-    res.send(`${newBounty.first_name} ${newBounty.last_name} has been added to the database`);
+    res.send(`Bounty: ${newBounty.first_name} ${newBounty.last_name} has been successfully added to the database`);
+})
+
+// put 
+bountyRouter.route("/:bountyID")
+.put((req, res) => {
+    const bountyID = req.params.bountyID;
+    const updatedBountyObject = req.body;
+    const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyID);
+    Object.assign(bounties[bountyIndex], updatedBountyObject);
+    res.send(`Bounty: ${newBounty.first_name} ${newBounty.last_name} has been successfully changed in the database`);
+})
+
+//delete
+.delete((req, res) => {
+    const bountyID = req.params.bountyID;
+    const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyID);
+    bounties.splice(bountyIndex, 1);
+    res.send(`Bounty: ${newBounty.first_name} ${newBounty.last_name} has been successfully removed from the database`)
 })
 
 module.exports = bountyRouter;

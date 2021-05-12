@@ -8,7 +8,6 @@ app.use(express.json())
 // Routes
 app.use('/bounties', require('./routes/bountyRouter.js'));
 
-
 // Listen
 app.listen(PORT, () => {
     console.log(`Server is running on PORT: ${PORT}`);
