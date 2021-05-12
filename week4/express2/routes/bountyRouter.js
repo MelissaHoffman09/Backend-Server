@@ -56,7 +56,7 @@ bountyRouter.get("/", (req, res) => {
     const newBounty = req.body; 
     newBounty._id = uuidv4();
     bounty.push(newBounty);
-    res.send(`Bounty: ${newBounty.firstName} ${newBounty.lastName} has been successfully added to the database`);
+    res.send(`Bounty has been successfully added to the database`);
 });
 
 // put
@@ -73,7 +73,7 @@ bountyRouter.put("/:bountyId", (req, res) => {
     const bountyId = req.params.bountyId  
     const bountyIndex = bounty.findIndex(bounty => bounty._id === bountyId) 
     bounty.splice(bountyIndex, 1) 
-    res.send(`Bounty: ${newBounty.firstName} ${newBounty.lastName} has been successfully deleted from the database`)
+    res.send(`Bounty has been successfully deleted from the database`)
 })
   
   module.exports = bountyRouter; // exporting variable to server to handle request
