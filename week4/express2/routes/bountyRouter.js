@@ -76,4 +76,4 @@ bountyRouter.put("/:bountyId", (req, res) => {
     res.send(`Bounty has been successfully deleted from the database`)
 })
   
-  module.exports = bountyRouter; // exporting variable to server to handle request
+  module.exports = bountyRouter;
