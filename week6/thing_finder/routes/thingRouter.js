@@ -69,7 +69,7 @@ thingRouter
  
  
  // Get by type
-     .get("/search/item", (req, res, next) => {
+     .get("/search/things", (req, res, next) => {
      const type = req.query.type
  
      if(!type){
