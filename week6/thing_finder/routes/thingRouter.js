@@ -60,13 +60,11 @@ const things = [
   }
 ];
 
-
 //Get all
 thingRouter
      .get("/", (req, res) => {
      res.status(200).send(things)
  })
- 
  
  // Get by type
      .get("/search/things", (req, res, next) => {
@@ -79,6 +77,5 @@ thingRouter
      const filterThings = things.filter(thing => thing.type === type)
      res.status(200).send(filterThings)
  });
- 
  
  module.exports = thingRouter
