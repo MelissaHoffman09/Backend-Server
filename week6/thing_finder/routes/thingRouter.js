@@ -1,8 +1,8 @@
 const express = require("express");
-const thingRouter = express.Router(); // router handle
-const { v4: uuidv4 } = require("uuid"); //middleware to save _id
+const thingRouter = express.Router(); 
+const { v4: uuidv4 } = require("uuid"); 
 
-//Array of "things"
+// Database
 const things = [
   {
     thing: "Sea Salt Jasmine Tea",
