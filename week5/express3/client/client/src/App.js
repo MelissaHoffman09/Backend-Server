@@ -7,41 +7,41 @@ import './style.css'
 function App() {
   const [bounty, setBounty] = useState([])
 
-  function getBounty() {
+  const getBounty = () => {
     axios.get('/bounty')
-      .then(res => setBounty(res.data))
-      .catch(err => console.log(err))
+    .then(res => {
+      setBounty(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
-
-  function addBounty(newBounty) {
+  
+  const addBounty = newBounty => {
     axios.post('/bounty', newBounty)
-      .then(res => {
-        setBounty(prevBounty => [res.data, ...prevBounty])
-      })
+      .then(res => setBounty(prevBounty => [...prevBounty, res.data]))
       .catch(err => console.log(err))
   }
   
-  function deleteBounty(bountyId) {
+  const deleteBounty = bountyId => {
     axios.delete(`/bounty/${bountyId}`)
       .then(res => {
         setBounty(prevBounty => prevBounty.filter(bounty => bounty._id !== bountyId))
       })
-      .catch(err => (err))
+      .catch(err => console.log(err))
   }
 
-  function editBounty(updates, bountyId) {
+  const editBounty = (updates, bountyId) => {
     axios.put(`/bounty/${bountyId}`, updates)
       .then(res => {
-        setBounty(prevBounty =>
-          prevBounty.map(bounty =>
-            bounty._id !== bountyId ? bounty : res.data))
+        setBounty(prevBounty => prevBounty.map(bounty => bounty._id !== bountyId ? bounty : res.data))
       })
-      .catch(err => (console.log(err)))
+      .catch(err => console.log(err))
   }
 
   useEffect(() => {
-    getBounty()
-  }, [])
+    getBounty();
+  }, []);
 
   return (
     <div className="App">
@@ -55,9 +55,9 @@ function App() {
       <h2>Bounty List</h2>
       {bounty.map(bounty =>
         <Bounty {...bounty}
-          key={bounty._id}
-          deleteBounty={deleteBounty}
-          editBounty={editBounty}
+        deleteBounty={deleteBounty}
+        editBounty={editBounty}
+        key={bounty._id}
         />)}
     </div>
   );

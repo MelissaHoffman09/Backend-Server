@@ -1,27 +1,28 @@
 import React, { useState } from 'react'
+import './style.css'
 
-function AddBountyForm(props) {
+const AddBountyForm = (props) => {
+    const {submit} = props;
+
     const initInputs = {
         firstName: props.firstName || '',
         lastName: props.lastName ||  '',
-        living: props.living || false,
-        terminated: props.terminated || false,
+        living: props.living || true,
         bountyAmount: props.bountyAmount ||  '',
         type: props.type || ''
     }
     const [inputs, setInputs] = useState(initInputs)
 
-    function handleChange(e) {
-        const target = e.target
-        const value = target.type === 'checkbox' ? target.checked : target.value
-        const name = target.name
+    const handleChange = e => {
+        const {name, value} = e.target;
         setInputs(prevInputs => ({ ...prevInputs, [name]: value }))
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = e => {
         e.preventDefault()
-        props.submit(inputs, props._id)
+        submit(inputs, props._id)
         setInputs(initInputs)
+        props.toggle && props.toggle(false)
     }
 
     return (
@@ -48,31 +49,27 @@ function AddBountyForm(props) {
                 onChange={handleChange}
                 placeholder='Bounty Price'
             />
+            <br /> <br />
+            <label>Type:</label> 
             <br />
-            <input
-                type='text'
-                name='type'
-                value={inputs.type}
-                onChange={handleChange}
-                placeholder='Jedi or Sith'
-            />
+            Jedi: <input type="checkbox" name="type" onChange={() => setInputs(prevInputs => {
+                return {...prevInputs, type: "Jedi"};
+            })} value={inputs.type} checked={inputs.type === "Jedi" ? true : false} /> 
             <br />
-            <span>Living</span>
-            <input
-                type='checkbox'
-                name='living'
-                checked= {inputs.living}
-                onChange={handleChange}
-            />
+            Sith: <input type="checkbox" name="type" onChange={() => setInputs(prevInputs => {
+                return {...prevInputs, type: "Sith"};
+            })} value={inputs.type} checked={inputs.type === "Sith" ? true : false}/> 
+            <br /> <br />
+            <label>Alive:</label> 
             <br />
-            <span>Terminated</span>
-            <input
-                type='checkbox'
-                name='terminated'
-                checked= {inputs.terminated}
-                onChange={handleChange}
-            />
-            <br />     
+            Yes: <input type="checkbox" name="living" onChange={() => setInputs(prevInputs => {
+                return {...prevInputs, living: "yes"};
+            })} value={inputs.type} checked={inputs.living === "yes" ? true : false}/> 
+            <br />
+            No: <input type="checkbox" name="living" onChange={() => setInputs(prevInputs => {
+                return {...prevInputs, living: "no"};
+            })} value={inputs.type} checked={inputs.living === "no" ? true : false} /> 
+            <br />  <br />
             <button className='submitB'>{props.buttonText}</button>
         </form>
     )
