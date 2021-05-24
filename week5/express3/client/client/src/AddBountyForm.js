@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
-import './style.css'
+import React, { useState } from 'react';
+import './style.css';
 
 const AddBountyForm = (props) => {
     const {submit} = props;
 
     const initInputs = {
-        firstName: props.firstName || '',
-        lastName: props.lastName ||  '',
+        firstName: props.firstName || "",
+        lastName: props.lastName ||  "",
+        bountyAmount: props.bountyAmount || 0,
         living: props.living || true,
-        bountyAmount: props.bountyAmount ||  '',
-        type: props.type || ''
+        type: props.type || "None"
     }
-    const [inputs, setInputs] = useState(initInputs)
+    const [inputs, setInputs] = useState(initInputs);
 
     const handleChange = e => {
         const {name, value} = e.target;
@@ -26,7 +26,7 @@ const AddBountyForm = (props) => {
     }
 
     return (
-        <form className='inputForm' onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit} >
             <input
                 type='text'
                 name='firstName'
@@ -72,7 +72,7 @@ const AddBountyForm = (props) => {
             <br />  <br />
             <button className='submitB'>{props.buttonText}</button>
         </form>
-    )
+    );
 }
 
 export default AddBountyForm

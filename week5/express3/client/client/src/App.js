@@ -5,7 +5,7 @@ import AddBountyForm from './AddBountyForm'
 import './style.css'
 
 function App() {
-  const [bounty, setBounty] = useState([])
+  const [bounty, setBounty] = useState([]);
 
   const getBounty = () => {
     axios.get('/bounty')
@@ -44,13 +44,13 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div>
       <h1>The Bounty Hunters</h1>
       <img className='img1' src='https://images.unsplash.com/photo-1600297485496-4d5f07d8adb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80' alt='logo' />
       <h2>Bounty Submission Form</h2>
       <AddBountyForm
         submit={addBounty}
-        buttonText="Add Bounty"
+        buttonText={"Post Bounty"}
       />
       <h2>Bounty List</h2>
       {bounty.map(bounty =>

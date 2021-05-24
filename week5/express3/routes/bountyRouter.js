@@ -40,15 +40,16 @@ const bounty = [
 // Routes
 
 // get all 
-bountyRouter.get("/", (req, res) => {
-    res.send(bounty);
+bountyRouter.route("/")
+.get((req, res) => {
+    res.status(200).send(bounty)
 })
 
 // get one 
   bountyRouter.get("/:bountyId", (req, res) => {
       const bountyId = req.params.bountyId
       const foundBounty = bounty.find(bounty => bounty._id === bountyId)
-      res.send(foundBounty)
+      res.status(200).send(foundBounty)
 })
 
 // post
@@ -56,16 +57,18 @@ bountyRouter.get("/", (req, res) => {
     const newBounty = req.body; 
     newBounty._id = uuidv4();
     bounty.push(newBounty);
-    res.send(`Bounty has been successfully added to the database`);
+    res.status(201).send(`Bounty has been successfully added to the database`);
 });
 
 // put
-bountyRouter.put("/:bountyId", (req, res) => {
+bountyRouter.route("/:bountyId")
+.put((req, res) => {
     const bountyId = req.params.bountyId
     const updateObject = req.body
     const bountyIndex = bounty.findIndex(bounty => bounty._id === bountyId)
     const updatedBounty = Object.assign(bounty[bountyIndex], updateObject) 
-    res.send(updatedBounty)
+    Object.assign(bounty[bountyIndex], updateObject);
+    res.status(200).send(bounty[bountyIndex]);
 })
 
 // delete
@@ -73,7 +76,7 @@ bountyRouter.put("/:bountyId", (req, res) => {
     const bountyId = req.params.bountyId  
     const bountyIndex = bounty.findIndex(bounty => bounty._id === bountyId) 
     bounty.splice(bountyIndex, 1) 
-    res.send(`Bounty has been successfully deleted from the database`)
+    res.status(200).send(`Bounty has been successfully deleted from the database`)
 })
   
   module.exports = bountyRouter;
