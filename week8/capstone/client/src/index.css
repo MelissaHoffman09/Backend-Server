@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+html {
+  background-image: linear-gradient(to right, #a8caba 0%, #5d4157 100%);
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: black;
+  scroll-behavior: smooth;
+}
+
+.img1 {
+  max-height: 400px;
+  filter: drop-shadow(2px 4px 8px rgba 0,0,0,0.4);
+  border-radius: 15%;
+  width: 35%; 
+}
+
+h1 {
+  font-size: 45px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+input {
+  margin: 3px;
+  font-family: 'Playfair Display', serif;
+
+}
+
+input:hover {
+  box-shadow: 1px 2px 5px #585858;
+}
+
+.submitB {
+  margin-top: 10px;
+  font-family: 'Playfair Display', serif;
+  padding: 20px, 28px
+}
+
+.submitB:hover {
+  filter: drop-shadow(1px 2px 4px #585858);
+}
+
+.deleteB {
+  margin-bottom: 7px;
+  font-family: 'Playfair Display', serif;
+  margin-right: 3px;
+}
+.deleteB:hover {
+  filter: drop-shadow(1px 2px 4px #585858);
+}
+.editB {
+  font-family: 'Playfair Display', serif;
+}
+.editB:hover {
+  filter: drop-shadow(1px 2px 4px #585858);
+}
+.cancelEditB {
+  font-family: 'Playfair Display', serif;
+  margin-top: 3px;
+}
+
+.cancelEditB:hover {
+  filter: drop-shadow(1px 2px 4px #585858);
+}
+.jobCard {
+  font-size: 12px;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  opacity: 0.9;
+  border-radius: 15px;
+  box-shadow: 6px 8px rgba(0,0,0,0.4);
+  width: 40%;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1.5%;
+}
+@media (min-width: 576px){
+  .jobCard, .img1 {
+  max-width: 540px;
+}}
+
+@media (min-width: 768px){
+  .jobCard, .img1 {
+  max-width: 720px;
+}}
+
+@media (min-width: 992px){
+  .jobCard, .img1 {
+  max-width: 960px;
+}}
+
+@media (min-width: 1200px){
+  .jobCard , .img1{
+  max-width: 1040px;
+}}
+
+@media (max-width: 576px) {
+  .jobCard, .img1 {
+      max-width: 90vw;
+  }
+}

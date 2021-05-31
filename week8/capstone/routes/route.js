@@ -110,7 +110,7 @@ route
 // Delete one
   .delete('/:jobId', (req, res, next) => {
     const jobId = req.params.jobId;
-    const jobIndex = flavors.findIndex((job) => job._id === jobId);
+    const jobIndex = jobs.findIndex((job) => job._id === jobId);
     jobs.splice(jobIndex, 1);
 
     res.send("Job has been deleted");
